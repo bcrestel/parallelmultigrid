@@ -1,0 +1,12 @@
+#! /bin/bash
+
+export OMP_NUM_THREADS=1
+
+for SIZE in 3 7 15 31 63
+#for SIZE in 3 15 63
+do
+	mpirun -np 8 ./multigrid.exe 127 $SIZE
+done
+
+exit 0
+~        
