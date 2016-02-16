@@ -6,13 +6,13 @@
 #include "boundarycondition3d.h"
 #include "array3d.h"
 
-void restrict_3d(double*&  X, int& N);
-void restrict_3d_full_weighting(double*& X, int& N);
+void restrict_3d(double*&  X, int N);
+void restrict_3d_full_weighting(double*& X, int N);
 
 /* This is the restriction method. X is used as both: an input argument, and as an output argument. 
 The size of the returned X is (N/2)*(N/2)*(N/2). N is assumed to be always odd, and follows 
 this rule:N = 2^k-1, for k = 1, 2, ..*/
-void restrict_3d(double*& X, int& N)
+void restrict_3d(double*& X, int N)
 {
 	int new_N  =  ((N-1)/2)*((N-1)/2)*((N-1)/2);
 	double *new_X = new double[new_N];
@@ -61,7 +61,7 @@ void restrict_3d(double*& X, int& N)
 The size of the returned X is (N/2)*(N/2)*(N/2). N is assumed to be always odd, and follows 
 this rule:N = 2^k-1, for k = 1, 2, ..
 This function uses the full-weighting formula in Zhang's paper, page 452, figure (2)*/
-void restrict_3d_full_weighting(double*& X, int& N)
+void restrict_3d_full_weighting(double*& X, int N)
 {
 	int new_N  =  ((N-1)/2)*((N-1)/2)*((N-1)/2);
 	double *new_X = new double[new_N];

@@ -24,10 +24,10 @@
 
 
 /* parallel setup & functions: */
-void v_cycle_par(const int THRESHOLD, double*& array3d, int& N, const double* const fluxfct, 
-			const int& v1, const int& v2, 
+void v_cycle_par(const int THRESHOLD, double*& array3d, int N, const double* const fluxfct, 
+			const int v1, const int v2, 
 			double* recvarray, const int* const opposite_rank, 
-			const double& omega, double* vector_out, bool gather = true );
+			const double omega, double* vector_out, bool gather = true );
 
 
 int main(int argc, char **argv)
@@ -118,8 +118,8 @@ and continue the coarsening, then prolongate until we reach the same number of e
 where we scatter the grid points.
 */
 
-void v_cycle_par( const int THRESHOLD, double*& array3d,  int& N, const double* const fluxfct, const int& v1, const int& v2, 
-		double* recvarray, const int* const opposite_rank, const double& omega, 
+void v_cycle_par( const int THRESHOLD, double*& array3d,  int N, const double* const fluxfct, const int v1, const int v2, 
+		double* recvarray, const int* const opposite_rank, const double omega, 
 		double* vector_out, bool gather )
 {
 	// Define datatypes for that grid hierarchy:

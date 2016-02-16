@@ -3,15 +3,15 @@
 
 #include <mpi.h>
 
-void fill_recvarray( double* array3d, const int& N, double* recvarray, const int* const opposite_rank, MPI_Datatype* datatype_faces );
+void fill_recvarray( double* array3d, const int N, double* recvarray, const int* const opposite_rank, MPI_Datatype* datatype_faces );
 
-int opposite_proc( const int& face, const int& mpirank, const int& mpisize );
+int opposite_proc( const int face, const int mpirank, const int mpisize );
 
-int* opposite_procs( const int& mpirank, const int& mpisize );
+int* opposite_procs( const int mpirank, const int mpisize );
 
-MPI_Datatype* get_datatypes( const int& N );
+MPI_Datatype* get_datatypes( const int N );
 
-int* neighboring_face( const int& face_index );
+int* neighboring_face( const int face_index );
 
 /*Simplified cubic root function to avoid
 expensive function call.*/
@@ -46,7 +46,7 @@ inline int find_cubicroot( const int number )
 
 /* Determine what face we are looking at based on the indices
 when evaluating points outside of array3d. */
-inline int what_face( const int& i, const int& j, const int& k, const int& N )
+inline int what_face( const int i, const int j, const int k, const int N )
 {
 	if (i == -1){		return 4;}
 	else if (i == N+2){	return 2;}

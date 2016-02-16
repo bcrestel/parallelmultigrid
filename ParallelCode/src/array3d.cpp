@@ -26,7 +26,7 @@ LIST OF MPI_Abort codes:
 #include "boundarycondition3d.h"
 
 
-double* initialize_array3d( const int& N, double* recvarray, const int& mpirank,
+double* initialize_array3d( const int N, double* recvarray, const int mpirank,
 		const int* const opposite_rank, MPI_Datatype* datatype_faces )
 {
 	int sizearray3d = (N+2)*(N+2)*(N+2);
@@ -169,7 +169,7 @@ double* initialize_array3d( const int& N, double* recvarray, const int& mpirank,
 }
 
 
-double* initialize_array3d_cst( const int& N, const double& value )
+double* initialize_array3d_cst( const int N, const double value )
 {
 	int sizearray3d = (N+2)*(N+2)*(N+2);
 	double* array3d = new double[sizearray3d];
@@ -180,8 +180,8 @@ double* initialize_array3d_cst( const int& N, const double& value )
 }
 
 
-void print_slice( const double* const array3d, const int& N, 
-		const int& direction, const int& index )
+void print_slice( const double* const array3d, const int N, 
+		const int direction, const int index )
 {
 	switch (direction)
 	{
@@ -209,8 +209,8 @@ void print_slice( const double* const array3d, const int& N,
 }
 
 
-void print_slicef( const double* const array3d, const int& N, 
-		const int& direction, const int& index )
+void print_slicef( const double* const array3d, const int N, 
+		const int direction, const int index )
 {
 	switch (direction)
 	{
@@ -241,7 +241,7 @@ void print_slicef( const double* const array3d, const int& N,
 }
 
 
-void print_allslices( const double* const array3d, const int& N )
+void print_allslices( const double* const array3d, const int N )
 {
 	for (int ii = 0; ii < N+2; ii++){
 		printf( "\nPrint slice %d in direction 0.\n", ii );
@@ -249,7 +249,7 @@ void print_allslices( const double* const array3d, const int& N )
 }
 
 
-void print_allslicesf( const double* const array3d, const int& N, const int& direction )
+void print_allslicesf( const double* const array3d, const int N, const int direction )
 {
 	for (int ii = 0; ii < N+2; ii++){
 		printf( "\nPrint slice %d in direction %d.\n", ii, direction );
@@ -258,7 +258,7 @@ void print_allslicesf( const double* const array3d, const int& N, const int& dir
 
 
 /*This funciton is used to subtract an "array3d" vector from a "3d" function (output = fluxfct - array_3d_1) .. */
-double* vecSub(const double* const array3d_1, double (*fluxfct) (const int&, const int&, const int&, const int&), const int& N)
+double* vecSub(const double* const array3d_1, double (*fluxfct) (const int, const int, const int, const int), const int N)
 {
 	double* output = new double[(N+2)*(N+2)*(N+2)];
 	double result;
@@ -280,7 +280,7 @@ double* vecSub(const double* const array3d_1, double (*fluxfct) (const int&, con
 
 
 /*This funciton is used to subtract an "array3d" vector from a "3d" function (output = fluxfct - array_3d_1) .. */
-double* vecSub_fun3d(const double* const array3d_1, const double* const fluxfct, const int& N)
+double* vecSub_fun3d(const double* const array3d_1, const double* const fluxfct, const int N)
 {
 	double* output = new double[(N+2)*(N+2)*(N+2)];
 	double result;
@@ -299,7 +299,7 @@ double* vecSub_fun3d(const double* const array3d_1, const double* const fluxfct,
 
 
 /*This funciton is used to subtract an "array3d" vector from a "3d" function (output = fluxfct - array_3d_1) .. */
-void vecSub_fun3d_buff(double* const output, const double* const array3d_1, double* fluxfct, const int& N)
+void vecSub_fun3d_buff(double* const output, const double* const array3d_1, double* fluxfct, const int N)
 {
 	double result;
 	int ii, jj;
@@ -316,7 +316,7 @@ void vecSub_fun3d_buff(double* const output, const double* const array3d_1, doub
 
 
 /*This function returns the addtion of two "array3d" vectors*/
-double* vecAdd(const double* const array3d_1, const double* const array3d_2, const int& N)
+double* vecAdd(const double* const array3d_1, const double* const array3d_2, const int N)
 {
 	double* output = new double[(N+2)*(N+2)*(N+2)];
 	double result;
@@ -339,7 +339,7 @@ double* vecAdd(const double* const array3d_1, const double* const array3d_2, con
 
 /* This function returns the addtion of two "array3d" vectors
 Buffered version of the previous one. It updates the first argument directly. */
-void vecAdd_buff(double*& array3d_1, const double* const array3d_2, double*& buffer, const int& N)
+void vecAdd_buff(double*& array3d_1, const double* const array3d_2, double*& buffer, const int N)
 {
 	double result;
 
@@ -363,7 +363,7 @@ void vecAdd_buff(double*& array3d_1, const double* const array3d_2, double*& buf
 
 
 // Copy a slice of an array3d
-void copy_slice( double* const slice, const double* const array3d, const int& N, const int& slice_direction, const int& slice_index )
+void copy_slice( double* const slice, const double* const array3d, const int N, const int slice_direction, const int slice_index )
 {
 	switch (slice_direction)
 	{

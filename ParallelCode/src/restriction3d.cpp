@@ -8,7 +8,7 @@
 #include "communication.h"
 
 
-void restrict_3d_7pnt( double*& array3d, int& N, double* recvarray, const int* const opposite_rank, MPI_Datatype* datatype_faces )
+void restrict_3d_7pnt( double*& array3d, int N, double* recvarray, const int* const opposite_rank, MPI_Datatype* datatype_faces )
 {
 	int new_N = (N-1)/2;
 	double* new_X = new double[(new_N+2)*(new_N+2)*(new_N+2)];
@@ -91,7 +91,7 @@ void restrict_3d_7pnt( double*& array3d, int& N, double* recvarray, const int* c
 }
 
 
-void restrict_3d_7pnt_buff( double*& array3d, double*& new_X, int& N, double* recvarray, const int* const opposite_rank, MPI_Datatype* datatype_faces )
+void restrict_3d_7pnt_buff( double*& array3d, double*& new_X, int N, double* recvarray, const int* const opposite_rank, MPI_Datatype* datatype_faces )
 {
 	fill_recvarray( array3d, N, recvarray, opposite_rank, datatype_faces );
 	
@@ -176,7 +176,7 @@ void restrict_3d_7pnt_buff( double*& array3d, double*& new_X, int& N, double* re
 
 
 // This method is not correct. we need to get values from processes on the corner.
-void restrict_3d_19pnt( double*& array3d, int& N, double* recvarray, const int* const opposite_rank, MPI_Datatype* datatype_faces )
+void restrict_3d_19pnt( double*& array3d, int N, double* recvarray, const int* const opposite_rank, MPI_Datatype* datatype_faces )
 {
 	fill_recvarray( array3d, N, recvarray, opposite_rank, datatype_faces );
 	

@@ -5,7 +5,7 @@ The entries ii, jj, kk should be either -1 or N (for at least one of the three i
 Indices 0,...,N-1 are interior.
 */
 
-double boundarycondition3d( const int& N, const int& ii, const int& jj, const int& kk )
+double boundarycondition3d( const int N, const int ii, const int jj, const int kk )
 {
 	return 0.;
 }

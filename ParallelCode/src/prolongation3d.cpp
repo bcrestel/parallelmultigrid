@@ -14,7 +14,7 @@ is taken as the number of grid points along one dimension.
 
 
 //new prolongation operator
-void prolongation3d_par( double*& array3d, int& N )
+void prolongation3d_par( double*& array3d, int N )
 {
 	int N_new = 2*N + 1;
 	int dim = N_new + 2;

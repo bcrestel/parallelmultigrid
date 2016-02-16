@@ -27,7 +27,7 @@ recvarray with values of neighboring cells.
 We do not exchange outside faces, but the ones just
 inside.
 recvarray has size 6*(N+2)*(N+2). */
-void fill_recvarray( double* array3d, const int& N, 
+void fill_recvarray( double* array3d, const int N, 
 			double* recvarray,
 			const int* const opposite_rank,
 			MPI_Datatype* datatype_faces )
@@ -72,7 +72,7 @@ void fill_recvarray( double* array3d, const int& N,
 
 /*Return the number of the process that shares same ghost values data
 on a corresponding face.*/
-int opposite_proc( const int& face, const int& mpirank, const int& mpisize )
+int opposite_proc( const int face, const int mpirank, const int mpisize )
 {
 	int proc_per_dim = find_cubicroot( mpisize );
         int res1 = (mpirank+1) % proc_per_dim;
@@ -113,7 +113,7 @@ int opposite_proc( const int& face, const int& mpirank, const int& mpisize )
 /*Return all the processes that share a common face with
 the current process. The ordering is similar to the one
 for the faces.*/
-int* opposite_procs( const int& mpirank, const int& mpisize )
+int* opposite_procs( const int mpirank, const int mpisize )
 {
 	double t1, tt1, tt2;
 	t1 = MPI_Wtime();
@@ -160,7 +160,7 @@ to pass array3d data to/from neighboring
 processes.
 Each MPI_Datatype correspond to a face, with
 the numbering being the same as for the faces. */
-MPI_Datatype* get_datatypes( const int& N )
+MPI_Datatype* get_datatypes( const int N )
 {
 	MPI_Datatype* output = new MPI_Datatype[6];
 
@@ -184,7 +184,7 @@ WARNING: THIS MUST BE CONSISTENT WITH THE
 ORDERING FOR GHOST RELATIVELY TO ARRAY3D.
 That is, we define all top, left, bottom, right 
 when looking at the face 1 of the cube.*/
-int* neighboring_face( const int& face_index )
+int* neighboring_face( const int face_index )
 {
 	int* output = new int[4];
 	

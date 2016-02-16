@@ -11,7 +11,7 @@ is taken as the number of grid points along one dimension.
 #include "array3d.h"
 #include "misc.h"
 
-void prolongation3d( double*& array3d, int& N )
+void prolongation3d( double*& array3d, int N )
 {
 	int N_new = 2*N + 1;
 	int sizearray_new = N_new*N_new*N_new;

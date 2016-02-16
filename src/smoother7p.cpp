@@ -7,7 +7,7 @@ a 3d-array, as defined in array3d.cpp, and using a
 
 #include "array3d.h"
 
-void smoother7p( double*& array3d, const int N, double (*fluxfct) (const int&, const int&, const int&, const int&), double omega )
+void smoother7p( double*& array3d, const int N, double (*fluxfct) (const int, const int, const int, const int), double omega )
 {
 	double*	array3d_new = new double[N*N*N];
 

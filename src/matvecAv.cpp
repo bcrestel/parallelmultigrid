@@ -10,7 +10,7 @@ N is the number of interior grid points along one dimension.
 #include "array3d.h"
 
 
-double* matvecAv7p( const double* const array3d, const int& N )
+double* matvecAv7p( const double* const array3d, const int N )
 {
 	double* output = new double[N*N*N];
 

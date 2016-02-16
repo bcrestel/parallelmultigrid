@@ -16,7 +16,7 @@ N is the number of interior grid points along one dimension.
 /* Compute a matvec with 7-pt stencil for A = 2nd-order centered finite-difference
 scheme and vector = array3d. Results will contain as many points as array3d, i.e
 (N+2)*(N+2)*(N+2). */
-void matvecAv( double* vector_out, double* array3d, const int& N, double* recvarray,
+void matvecAv( double* vector_out, double* array3d, const int N, double* recvarray,
 					const int* const opposite_rank, MPI_Datatype* datatype_faces )
 {
 	fill_recvarray( array3d, N, recvarray, opposite_rank, datatype_faces );

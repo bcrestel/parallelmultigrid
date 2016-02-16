@@ -15,8 +15,8 @@ the interior grid points.
 #include "boundarycondition3d.h"
 
 
-void fill_array3d( double* const array, const int& N, 
-		const int& i, const int& j, const int& k, const double& value )
+void fill_array3d( double* const array, const int N, 
+		const int i, const int j, const int k, const double value )
 {
 	if ( Is_inbetween( i, 0, N-1 ) && Is_inbetween( j, 0, N-1 ) && Is_inbetween( k, 0, N-1 ) ){
 		array[ i + j*N + k*N*N ]  = value;}
@@ -26,8 +26,8 @@ void fill_array3d( double* const array, const int& N,
 }
 
 
-double evaluate_array3d( const double* const array, const int& N, 
-			const int& i, const int& j, const int& k )
+double evaluate_array3d( const double* const array, const int N, 
+			const int i, const int j, const int k )
 {
 	if ( Is_inbetween( i, 0, N-1 ) && Is_inbetween( j, 0, N-1 ) && Is_inbetween( k, 0, N-1 ) ){
 		return ( array[ i + j*N + k*N*N ] );
@@ -40,8 +40,8 @@ double evaluate_array3d( const double* const array, const int& N,
 }
 
 
-void print_slice( const double* const array3d, const int& N, 
-		const int& direction, const int& index )
+void print_slice( const double* const array3d, const int N, 
+		const int direction, const int index )
 {
 	switch (direction)
 	{
@@ -69,8 +69,8 @@ void print_slice( const double* const array3d, const int& N,
 }
 
 
-void print_slicef( const double* const array3d, const int& N, 
-		const int& direction, const int& index )
+void print_slicef( const double* const array3d, const int N, 
+		const int direction, const int index )
 {
 	switch (direction)
 	{
@@ -101,7 +101,7 @@ void print_slicef( const double* const array3d, const int& N,
 }
 
 
-void print_allslices( const double* const array3d, const int& N )
+void print_allslices( const double* const array3d, const int N )
 {
 	for (int ii = 0; ii < N; ii++){
 		printf( "\nPrint slice %d in direction 0.\n", ii );
@@ -109,7 +109,7 @@ void print_allslices( const double* const array3d, const int& N )
 }
 
 
-void print_allslicesf( const double* const array3d, const int& N )
+void print_allslicesf( const double* const array3d, const int N )
 {
 	for (int ii = 0; ii < N; ii++){
 		printf( "\nPrint slice %d in direction 0.\n", ii );
@@ -118,7 +118,7 @@ void print_allslicesf( const double* const array3d, const int& N )
 
 
 /*This funciton is used to subtract an "array3d" vector from a "3d" function (output = fluxfct - array_3d_1) .. */
-double* vecSub(const double* const array3d_1, double (*fluxfct) (const int&, const int&, const int&, const int&), const int& N)
+double* vecSub(const double* const array3d_1, double (*fluxfct) (const int, const int, const int, const int), const int N)
 {
 	double* output = new double[N*N*N];
 	double result;
@@ -140,7 +140,7 @@ double* vecSub(const double* const array3d_1, double (*fluxfct) (const int&, con
 
 
 /*This funciton is used to subtract an "array3d" vector from a "3d" function (output = fluxfct - array_3d_1) .. */
-double* vecSub_fun3d(const double* const array3d_1, double* fluxfct, const int& N)
+double* vecSub_fun3d(const double* const array3d_1, double* fluxfct, const int N)
 {
 	double* output = new double[N*N*N];
 	double result;
@@ -159,7 +159,7 @@ double* vecSub_fun3d(const double* const array3d_1, double* fluxfct, const int& 
 
 
 /*This function returns the addtion of two "array3d" vectors*/
-double* vecAdd(const double* const array3d_1, const double* const array3d_2, const int& N)
+double* vecAdd(const double* const array3d_1, const double* const array3d_2, const int N)
 {
 	double* output = new double[N*N*N];
 	double result;

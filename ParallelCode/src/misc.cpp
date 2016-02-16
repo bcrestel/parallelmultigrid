@@ -7,7 +7,7 @@
 
 #include "misc.h"
 
-double norm2_omp( const double* const V, const int& Ntotal )
+double norm2_omp( const double* const V, const int Ntotal )
 {
 	double output = 0.;
 
@@ -19,7 +19,7 @@ double norm2_omp( const double* const V, const int& Ntotal )
 }
 
 
-double norminf_omp( const double* const V, const int& Ntotal )
+double norminf_omp( const double* const V, const int Ntotal )
 {
 	double output = 0.;
 	double tmp = 0.;
@@ -38,7 +38,7 @@ double norminf_omp( const double* const V, const int& Ntotal )
 }
 
 
-int index2unique( const int& ii, const int& jj, const int& kk )
+int index2unique( const int ii, const int jj, const int kk )
 {
 	int iiev = Is_even(ii) ? 1 : 0;
 	int jjev = Is_even(jj) ? 1 : 0;

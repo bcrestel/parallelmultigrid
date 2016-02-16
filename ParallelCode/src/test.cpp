@@ -71,7 +71,7 @@ void test_misc()
 }
 
 
-double fluxfunction( const int& N, const int& ii, const int& jj, const int& kk ){	return 0.;}
+double fluxfunction( const int N, const int ii, const int jj, const int kk ){	return 0.;}
 
 void test_smoother7p()
 {
